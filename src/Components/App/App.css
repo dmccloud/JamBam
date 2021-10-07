@@ -9,7 +9,10 @@ html {
 }
 
 h1 {
-  padding: 0.77rem 0;
+  position: fixed;
+  width: 100%;
+  padding: -5px;
+  margin: -1px;
   background-color: #010c3f;
   text-align: center;
   font-family: "Poppins", sans-serif;
@@ -68,5 +71,8 @@ h2 {
   .App-playlist {
     align-items: center;
     flex-direction: column;
+  }
+  .App {
+    height: 2000px;
   }
 }
