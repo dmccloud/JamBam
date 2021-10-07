@@ -9,10 +9,12 @@ function App() {
     <div className="App">
       {/* SearchBar component  */}
       <SearchBar />
-      {/* <!-- SearchResults component --> */}
-      <SearchResults />
-      {/* <!-- Playlist component --> */}
-      <Playlist />
+      <div className="App-playlist">
+        {/* <!-- SearchResults component --> */}
+        <SearchResults />
+        {/* <!-- Playlist component --> */}
+        <Playlist />
+      </div>
     </div>
   );
 }
