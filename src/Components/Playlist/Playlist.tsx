@@ -15,7 +15,7 @@ const Playlist = (PlaylistProps: PlaylistProps) => {
     <div className="Playlist">
       <input
         placeholder="New Playlist"
-        defaultValue="New PLaylist"
+        //defaultValue="New PLaylist"
         value={PlaylistProps.playlistName}
         onChange={(e) => {
           PlaylistProps.updatePlaylistName(e.target.value);

@@ -5,9 +5,14 @@ import SearchResults from "../SearchResults/SearchResults";
 import Playlist from "../Playlist/Playlist";
 import TrackType from "../../Types/TrackType";
 import UserContext from "../../util/UserContext";
+import { getAccessToken } from "../../util/Spotify";
 //import TrackList from "../TrackList/TrackList";
 
 function App() {
+  const [userState, setUserState] = useState({
+    token: null,
+    expire: 0,
+  });
   const [foundSongs, setFoundSongs] = useState([
     {
       id: 1,
@@ -91,6 +96,9 @@ function App() {
     console.log(playlistName, ":");
     console.log(uris);
   };
+
+  //getAccessToken();
+
   return (
     <UserContext.Provider value={{ userAccessToken: "" }}>
       <div>
