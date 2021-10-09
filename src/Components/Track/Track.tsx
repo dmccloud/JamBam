@@ -1,4 +1,4 @@
-import TrackType from "../../Types";
+import TrackType from "../../Types/TrackType";
 import "./Track.css";
 interface TrackProps {
   track: TrackType;

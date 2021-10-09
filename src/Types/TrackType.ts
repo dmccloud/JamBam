@@ -3,6 +3,7 @@ type TrackType = {
   name: string;
   artist: string;
   album: string;
+  uri: string;
 };
 
 export default TrackType;

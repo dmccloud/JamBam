@@ -1,12 +1,13 @@
 import "./Playlist.css";
 import TrackList from "../TrackList/TrackList";
-import TrackType from "../../Types";
+import TrackType from "../../Types/TrackType";
 
 interface PlaylistProps {
   playlist: TrackType[];
   playlistName: string;
   removeTrack: (track: TrackType) => void;
   updatePlaylistName: (name: string) => void;
+  savePlaylist: (playlistName: string, tracks: TrackType[]) => void;
 }
 const Playlist = (PlaylistProps: PlaylistProps) => {
   const data = PlaylistProps.playlist;
@@ -25,7 +26,14 @@ const Playlist = (PlaylistProps: PlaylistProps) => {
         data={data}
         isRemoval={true}
       />
-      <button className="Playlist-save">SAVE TO SPOTIFY</button>
+      <button
+        className="Playlist-save"
+        onClick={() =>
+          PlaylistProps.savePlaylist(PlaylistProps.playlistName, data)
+        }
+      >
+        SAVE TO SPOTIFY
+      </button>
     </div>
   );
 };

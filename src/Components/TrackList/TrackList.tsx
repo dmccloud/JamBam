@@ -1,5 +1,5 @@
 import "./TrackList.css";
-import TrackType from "../../Types";
+import TrackType from "../../Types/TrackType";
 import Track from "../Track/Track";
 
 interface TrackListProps {

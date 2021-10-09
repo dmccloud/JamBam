@@ -1,6 +1,6 @@
 import "./SearchResults.css";
 import TrackList from "../TrackList/TrackList";
-import TrackType from "../../Types";
+import TrackType from "../../Types/TrackType";
 
 interface SearchResultsProps {
   foundSongs: TrackType[];
