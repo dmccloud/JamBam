@@ -7,7 +7,7 @@ interface TrackProps {
 }
 const Track = (TrackProps: TrackProps) => {
   const { track, addRemoveTrack, isRemoval } = TrackProps;
-  console.log(`track: `, track);
+  //console.log(`track: `, track);
   return (
     <div className="Track">
       <div className="Track-information">

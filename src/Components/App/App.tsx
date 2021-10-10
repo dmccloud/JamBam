@@ -4,9 +4,9 @@ import SearchBar from "../SearchBar/SearchBar";
 import SearchResults from "../SearchResults/SearchResults";
 import Playlist from "../Playlist/Playlist";
 import TrackType from "../../Types/TrackType";
-
 import { getAccessToken, trackSearch } from "../../util/Spotify";
 import UserType from "../../Types/UserType";
+
 //import TrackList from "../TrackList/TrackList";
 
 const App: React.FC = () => {
@@ -14,61 +14,13 @@ const App: React.FC = () => {
     token: null,
     expire: 0,
   });
-  const [foundSongs, setFoundSongs] = useState([
-    {
-      id: 1,
-      name: "SongName",
-      artist: "Artist Name",
-      album: "Album Name",
-      uri: "spotify:track:6rqhFgbbKwnb9MLmUQDhG6",
-    },
-    {
-      id: 2,
-      name: "SongName",
-      artist: "Artist Name",
-      album: "Album Name",
-      uri: "spotify:track:6rqhFgbbKwnb9MLmUQDhG6",
-    },
-    {
-      id: 3,
-      name: "SongName",
-      artist: "Artist Name",
-      album: "Album Name",
-      uri: "spotify:track:6rqhFgbbKwnb9MLmUQDhG6",
-    },
-  ]);
-  const [playlist, setPlaylist] = useState({
+  const [foundSongs, setFoundSongs] = useState([]);
+  const [playlist, setPlaylist] = useState<{
+    playlistName: string;
+    tracks: TrackType[];
+  }>({
     playlistName: "",
-    tracks: [
-      {
-        id: 4,
-        name: "SongName",
-        artist: "Artist Name",
-        album: "Album Name",
-        uri: "spotify:track:6rqhFgbbKwnb9MLmUQDhG6",
-      },
-      {
-        id: 5,
-        name: "SongName",
-        artist: "Artist Name",
-        album: "Album Name",
-        uri: "spotify:track:6rqhFgbbKwnb9MLmUQDhG6",
-      },
-      {
-        id: 6,
-        name: "SongName",
-        artist: "Artist Name",
-        album: "Album Name",
-        uri: "spotify:track:6rqhFgbbKwnb9MLmUQDhG6",
-      },
-      {
-        id: 7,
-        name: "SongName",
-        artist: "Artist Name",
-        album: "Album Name",
-        uri: "spotify:track:6rqhFgbbKwnb9MLmUQDhG6",
-      },
-    ],
+    tracks: [],
   });
 
   const search = (term: string) => {
