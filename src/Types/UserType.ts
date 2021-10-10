@@ -1,6 +1,3 @@
-type UserType = React.Context<{
-  userAccessToken: string;
-  updateUserAccessToken: () => void;
-}>;
+export type UserType = { token: string | null; expire: number };
 
 export default UserType;
