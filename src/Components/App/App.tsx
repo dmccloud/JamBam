@@ -4,7 +4,7 @@ import SearchBar from "../SearchBar/SearchBar";
 import SearchResults from "../SearchResults/SearchResults";
 import Playlist from "../Playlist/Playlist";
 import TrackType from "../../Types/TrackType";
-import { getAccessToken, trackSearch } from "../../util/Spotify";
+import { getAccessToken, saveToSpotify, trackSearch } from "../../util/Spotify";
 import UserType from "../../Types/UserType";
 
 //import TrackList from "../TrackList/TrackList";
@@ -46,8 +46,9 @@ const App: React.FC = () => {
   };
   const savePlaylist = (playlistName: string, tracks: TrackType[]) => {
     const uris = tracks.map((t) => t.uri);
-    console.log(playlistName, ":");
-    console.log(uris);
+    saveToSpotify(userState.token, playlistName, uris);
+    // console.log(playlistName, ":");
+    // console.log(uris);
   };
 
   useEffect(() => {

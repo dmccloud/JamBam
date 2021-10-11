@@ -23,7 +23,7 @@ export const getAccessToken = (userObj: UserType, setter: any) => {
       window.setTimeout(() => (newObj.token = ""), expire * 1000);
       window.history.pushState("Access Token", "", "/");
     } else {
-      window.location.href = `https://accounts.spotify.com/authorize?client_id=${client}&redirect_uri=${redirect}&scope=user-read-private%20user-read-email&response_type=token&state=123`;
+      window.location.href = `https://accounts.spotify.com/authorize?client_id=${client}&redirect_uri=${redirect}&scope=user-read-private%20playlist-modify-public%20playlist-modify-private%20user-read-email&response_type=token&state=123`;
     }
   }
 };
@@ -52,4 +52,41 @@ export const trackSearch = async (
     })
   );
   setter(trackArray);
+};
+
+export const saveToSpotify = async (
+  token: string | null,
+  playlistName: string,
+  trackUris: string[]
+) => {
+  if (!playlistName || trackUris.length === 0) {
+    console.log("nah brah");
+    return;
+  }
+  const headers = {
+    Authorization: `Bearer ${token}`,
+  };
+  const userInfo: { data: { id: string } } = await axios.get(
+    "https://api.spotify.com/v1/me",
+    {
+      headers: headers,
+    }
+  );
+  try {
+    await axios.post(
+      `https://api.spotify.com/v1/users/${userInfo.data.id}/playlists`,
+      {
+        body: { name: playlistName },
+      },
+      {
+        headers: headers,
+      }
+    );
+    console.log("new playlist created");
+  } catch (error: any) {
+    console.log(error.message);
+  }
+  console.log(userInfo.data.id);
+  console.log(token);
+  console.log(playlistName || "nothing", "playlist saved");
 };
