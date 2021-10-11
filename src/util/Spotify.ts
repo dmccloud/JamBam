@@ -3,12 +3,7 @@ import UserType from "../Types/UserType";
 import TrackType, { TrackResponseType } from "../Types/TrackType";
 
 const client = "52f777e612e64e1390237e9da1dabc81";
-const redirect = "http://localhost:3000";
-
-// const accessToken: { token: string | null; expire: number } = {
-//   token: null,
-//   expire: 0,
-// };
+const redirect = "https://jambam.surge.sh";
 
 export const getAccessToken = (userObj: UserType, setter: any) => {
   const tokenStr = window.location.href.match(/access_token=([^&]*)/);
@@ -72,21 +67,27 @@ export const saveToSpotify = async (
       headers: headers,
     }
   );
-  try {
-    await axios.post(
+  if (userInfo.data.id) {
+    const playlistObj: { data: { id: string } } = await axios.post(
       `https://api.spotify.com/v1/users/${userInfo.data.id}/playlists`,
-      {
-        body: { name: playlistName },
-      },
+      { name: playlistName },
       {
         headers: headers,
       }
     );
-    console.log("new playlist created");
-  } catch (error: any) {
-    console.log(error.message);
+    if (playlistObj.data.id) {
+      axios.post(
+        `https://api.spotify.com/v1/users/${userInfo.data.id}/playlists/${playlistObj.data.id}/tracks`,
+        { uris: trackUris },
+        {
+          headers: headers,
+        }
+      );
+      console.log("saved, yo");
+    } else {
+      console.log("error saving tracks to playlist");
+    }
+  } else {
+    console.log("Error fetching user information");
   }
-  console.log(userInfo.data.id);
-  console.log(token);
-  console.log(playlistName || "nothing", "playlist saved");
 };

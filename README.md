@@ -1,4 +1,7 @@
 # JamBam
+## A simple way to search for songs, and add them to a new playlist to your spotify account.
+### Created using Typescript, it is a SPA that utilizes Spotify's api's to autheniticat user, search for songs and create new playlists
+### Have a look at jambam.surge.sh to see the deployed version of this project 🚀
 
 ## To Run
 
